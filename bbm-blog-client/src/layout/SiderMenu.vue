@@ -1,10 +1,19 @@
 <template>
-  <div>Sider</div>
+  <div>
+    <AdminInfo />
+    <div>
+      sider
+    </div>
+  </div>
 </template>
 
 <script>
-export default {
+import AdminInfo from "./AdminInfo";
 
+export default {
+  components: {
+    AdminInfo
+  }
 }
 </script>
 
