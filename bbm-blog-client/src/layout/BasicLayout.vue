@@ -1,13 +1,13 @@
 <template>
   <a-layout id="components-layout-demo-side" style="min-height: 100vh">
-    <a-layout-sider v-model="collapsed" collapsible theme="light" :trigger="null">
+    <a-layout-sider v-model="collapsed" collapsible collapsedWidth="0" theme="light" :trigger="null">
       <!-- <div class="logo">
       </div> -->
-      <SiderMenu/>
+      <SiderMenu :collapsed="collapsed"/>
     </a-layout-sider>
     <a-layout>
       <a-layout-header style="background: #fff; padding: 0">
-        <a-icon :type="collapsed ? 'menu-fold' : 'menu-unfold'" />
+        <a-icon style="font-size: 20px; margin-left: 10px" @click="collapsed = !collapsed" :type="collapsed ? 'menu-fold' : 'menu-unfold'" />
         <Header />
       </a-layout-header>
       <a-layout-content style="margin: 0 16px">

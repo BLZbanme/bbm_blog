@@ -1,7 +1,7 @@
 <template>
   <div class="user-div">
     <img id="pic" src="../assets/icon.png">
-    <div class="info-div">
+    <div class="info-div" v-if="!collapsed">
       <p id="name"><span>Blzbanme</span></p>
       <p id="email"><span>uestc_dj@163.com</span></p>
       <p id="github"><a-icon @click="toMyGithub()" type="github"></a-icon></p>
@@ -11,6 +11,11 @@
 
 <script>
 export default {
+  props: {  
+    collapsed: {
+      type: Boolean
+    }
+  },
   methods: {
     toMyGithub() {
       window.open(`https://github.com/BLZbanme`);
@@ -22,7 +27,7 @@ export default {
 <style>
 .user-div {
   background-color:beige;
-  height: 25vh;
+  height: 20vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
