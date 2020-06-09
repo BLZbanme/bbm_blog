@@ -3,27 +3,49 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-  const routes = [
-    {
-      path: '/',
-      name: 'Home',
-      component: () => import(/* webpackChunkName: "layout" */"../layout/BasicLayout"),
-      children: [
-        {
-          path: "/",
-          name: "analysis",
-          meta: { icon: "dashboard", title: "分析页" },
-          component: () =>
-            import(/* webpackChunkName: "user" */ "../views/About")
-        }
-      ]
-    },
-    {
-      path: '/',
-      name: 'blogs',
-      component: () => import(/* webpackChunkName: "layout" */"../views/BlogList"),
-    }
-  ]
+const routes = [
+  {
+    path: '/',
+    name: 'Home',
+    hidenInMenu: true,
+    component: () => import(/* webpackChunkName: "layout" */"../layout/BasicLayout"),
+    children: [
+      {
+        path: '/blogs',
+        name: 'blogs',
+        meta: {
+          icon: "book",
+          title: "随笔"
+        },
+        component: () => import(/* webpackChunkName: "layout" */"../views/BlogList"),
+      },
+      {
+        path: '/tags',
+        name: 'tags',
+        meta: {
+          icon: "tags",
+          title: "标签"
+        },
+        children: [
+          {
+            path: '/tags/:id',
+            name: 'tag1',
+            meta: {
+              title: "tag1"
+            }
+          },
+          {
+            path: '/tags/:id',
+            name: 'tag2',
+            meta: {
+              title: "tag2"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
 
 const router = new VueRouter({
   mode: 'history',
