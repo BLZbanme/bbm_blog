@@ -8,7 +8,7 @@
         :inline-collapsed="collapsed"
       >
       <template v-for="item in MenuData">
-        <a-menu-item v-if="!item.children" :key="item.name">
+        <a-menu-item v-if="!item.children" :key="item.name" @click="$router.push(item.path)">
           <a-icon v-if="item.meta.icon" :type="item.meta.icon" style="font-size: 20px;"/>
           <span style="font-size: 20px;">{{ item.meta.title }}</span>
         </a-menu-item>
